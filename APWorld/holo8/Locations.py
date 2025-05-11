@@ -3,7 +3,6 @@ from BaseClasses import CollectionState
 from dataclasses import dataclass
 from .Regions import Regions, Holo8Region
 from .Options import Holo8Options
-#from .Holo8Logic import Holo8Logic
 
 @dataclass
 class Holo8Location:
@@ -13,7 +12,6 @@ class Holo8Location:
     logic: Optional[Callable[[CollectionState], bool]] = None
 
 def get_location_data(player: Optional[int], options: Optional[Holo8Options], doNormal: bool, doEveryday: bool):
-    #logic = Holo8Logic(player, options)
 
     locations: List[Holo8Location] = []
 
@@ -27,7 +25,7 @@ def get_location_data(player: Optional[int], options: Optional[Holo8Options], do
             Holo8Location("Red-Tinted Office", Regions.normal, "0_6"),
             Holo8Location("Gigi at the Buttons", Regions.normal, "0_7", lambda state: state.has('Hololive Justice', player)),
             Holo8Location("Ayame with Silly Glasses", Regions.normal, "0_8"),
-            Holo8Location("Mitieru Lights Off", Regions.normal, "0_9"),
+            Holo8Location("Miteiru Lights Off", Regions.normal, "0_9"),
             Holo8Location("Ayame Dancing", Regions.normal, "0_10"),
             Holo8Location("Hyper Dancing", Regions.normal, "0_11"),
             Holo8Location("Ao's Long Legs", Regions.normal, "0_12", lambda state: state.has('ReGLOSS', player)),
@@ -62,7 +60,7 @@ def get_location_data(player: Optional[int], options: Optional[Holo8Options], do
             Holo8Location("Taranchama in the Hallway", Regions.normal, "0_41", lambda state: state.has('Taranchama', player)),
             Holo8Location("Tree-Kun", Regions.normal, "0_42", lambda state: state.has('Hololive GAMERS', player)),
             Holo8Location("Tired Fubuzilla", Regions.normal, "0_43", lambda state: state.has('Hololive Generation 1', player)),
-            Holo8Location("Mitieru in the Hallway", Regions.normal, "0_44", lambda state: state.has('Hololive Generation 1', player)),
+            Holo8Location("Miteiru in the Hallway", Regions.normal, "0_44", lambda state: state.has('Hololive Generation 1', player)),
             Holo8Location("Loli Subaru", Regions.normal, "0_45", lambda state: state.has('Hololive Generation 2', player)),
             Holo8Location("AquShio Broomstick Ride", Regions.normal, "0_46", lambda state: state.has('Hololive Generation 2', player)),
             Holo8Location("Watame in the Private Room", Regions.normal, "0_47", lambda state: state.has('HoloForce', player)),
@@ -83,7 +81,7 @@ def get_location_data(player: Optional[int], options: Optional[Holo8Options], do
             Holo8Location("Nene and Giraffa", Regions.normal, "0_66", lambda state: state.has('NePoLaBo', player)),
             Holo8Location("Vivi's Makeup Session", Regions.normal, "0_67", lambda state: state.has_all({'ReGLOSS', 'FLOW GLOW'}, player)),
             Holo8Location("Under Construction", Regions.normal, "0_68", lambda state: state.has_all({'Mikodanye', 'Taranchama'}, player)),
-            Holo8Location("35P Exit", Regions.normal, "0_69", lambda state: state.has('Hololive Generation 0', player)),
+            Holo8Location("35P on the Exit Door", Regions.normal, "0_69", lambda state: state.has('Hololive Generation 0', player)),
             Holo8Location("Coco's Piggyback Ride", Regions.normal, "0_71", lambda state: state.has('HoloForce', player)),
             Holo8Location("Hagebo", Regions.normal, "0_72", lambda state: state.has('Hololive Generation 0', player)),
             Holo8Location("Suicopath", Regions.normal, "0_73", lambda state: state.has('Hololive Generation 0', player)),
@@ -103,7 +101,7 @@ def get_location_data(player: Optional[int], options: Optional[Holo8Options], do
                 Holo8Location("Taranchama Eyes", Regions.normal, "0_3", lambda state: state.has('Taranchama', player)),
                 Holo8Location("Blinking AZKi Poster", Regions.normal, "0_54"),
                 Holo8Location("Incorrect Heterochromia", Regions.normal, "0_56"),
-                Holo8Location("Mitieru Poster's Eyes", Regions.normal, "0_61"),
+                Holo8Location("Miteiru Poster's Eyes", Regions.normal, "0_61"),
                 Holo8Location("Marine's Eyepatch Design", Regions.normal, "0_61"),
                 Holo8Location("Botan's Camouflage", Regions.normal, "0_70", lambda state: state.has('NePoLaBo', player)),
                 Holo8Location("Hidden Sapling", Regions.normal, "0_76"),
@@ -123,14 +121,14 @@ def get_location_data(player: Optional[int], options: Optional[Holo8Options], do
             Holo8Location("StartEnd", Regions.everyday, "1_5", lambda state: state.has_all({'Hololive Generation 2', 'HoloForce'}, player)),
             Holo8Location("Duck ASMR", Regions.everyday, "1_6", lambda state: state.has('Hololive Generation 2', player)),
             Holo8Location("Peeping Matsuri", Regions.everyday, "1_7", lambda state: state.has_all({'Hololive Generation 1', 'Hololive Generation 2'}, player)),
-            Holo8Location("Luna and the Ducks", Regions.everyday, "1_8", lambda state: state.has_all({'Hololive Generation 2', 'Holoforce'}, player)),
+            Holo8Location("Luna and the Ducks", Regions.everyday, "1_8", lambda state: state.has_all({'Hololive Generation 2', 'HoloForce'}, player)),
             Holo8Location("Chloe's Bathtime", Regions.everyday, "1_9", lambda state: state.has('HoloX Secret Society', player)),
             Holo8Location("Amelia and Smol Ame Behind the Door", Regions.everyday, "1_10", lambda state: state.has('Hololive Myth', player)),
             Holo8Location("Zeta and Iroha's Chat", Regions.everyday, "1_11", lambda state: state.has_all({'HoloX Secret Society', 'Holoh3ro'}, player)),
             Holo8Location("Attacked by Ina's Tentacles", Regions.everyday, "1_12", lambda state: state.has('Hololive Myth', player)),
             Holo8Location("Home on Time", Regions.everyday, "1_13"),
             Holo8Location("A-chan Working", Regions.everyday, "1_14"),
-            Holo8Location("35P Suisei", Regions.everyday, "1_15", lambda state: state.has('Hololive Generation 0', player)),
+            Holo8Location("Suisei with a 35P Head", Regions.everyday, "1_15", lambda state: state.has('Hololive Generation 0', player)),
             Holo8Location("Okanyan Kabedon", Regions.everyday, "1_16", lambda state: state.has('Hololive GAMERS', player)),
             Holo8Location("Marine's Mosaic Costume", Regions.everyday, "1_17"),
             Holo8Location("Classmate Marine", Regions.everyday, "1_18"),
@@ -146,7 +144,7 @@ def get_location_data(player: Optional[int], options: Optional[Holo8Options], do
             Holo8Location("The Oozora Police Chase", Regions.everyday, "1_28", lambda state: state.has_all({'Hololive Generation 2', 'Hololive Myth', 'Hololive CouncilRyS'}, player)),
             Holo8Location("Fauna and the Slaplings", Regions.everyday, "1_29", lambda state: state.has('Hololive CouncilRyS', player)),
             Holo8Location("Kronii's Udon", Regions.everyday, "1_30", lambda state: state.has('Hololive CouncilRyS', player)),
-            Holo8Location("Watchful Eyes of Nerissa", Regions.everyday, "1_31", lambda state: state.has('Hololive Advent', player)),
+            Holo8Location("Watchful Nerissa", Regions.everyday, "1_31", lambda state: state.has('Hololive Advent', player)),
             Holo8Location("Ririka and her SOSages", Regions.everyday, "1_32", lambda state: state.has('ReGLOSS', player)),
             Holo8Location("Hajime and Kanade's Tricycles", Regions.everyday, "1_33", lambda state: state.has('ReGLOSS', player)),
             Holo8Location("Ao Appears", Regions.everyday, "1_34", lambda state: state.has('ReGLOSS', player)),

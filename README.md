@@ -1,11 +1,13 @@
 # holo8 Archipelago Client
+[<img src="https://i.imgur.com/X2EAzUB.png" height="250"/>](https://i.imgur.com/X2EAzUB.png)
+
 This is a work-in-progress BepInEx mod for [holo8](https://store.steampowered.com/app/3373960/holo8/) that targets the [Archipelago Multiworld Randomizer](https://archipelago.gg/).
 
-## Uh, fangame?
+# Uh, fangame?
 
 Aha, not so. holo8 [is published under the CCMC Corporation's HoloIndie project](https://ccmc-corp.com/en/202502/29/), which permits the game's developer to use Cover Corporation's intellectual property with full permission.
 
-## What does Archipelago do to holo8? Isn't the game already fully random?
+# What does Archipelago do to holo8? Isn't the game already fully random?
 
 - Encountering and successfully determining an anomaly is a check. *You will not be given a check if you fail to detect an anomaly.*
 - Certain anomalies will not be encountered until you have the respective item relating to the anomaly.
@@ -20,7 +22,7 @@ Aha, not so. holo8 [is published under the CCMC Corporation's HoloIndie project]
 
 You will need to find the *Mikodanye* and *Taranchama* items before the elevator is allowed to progress past Floor 8. Once the elevator is working again, you simply need to escape the office to goal.
 
-## Setup
+# Setup
 You will need the following:
 -   The latest version of holo8, downloaded from Steam
 -   The Archipelago software from [their Releases page](https://github.com/ArchipelagoMW/Archipelago/releases/latest)
@@ -47,21 +49,21 @@ All further instructions can be found in the [official Archipelago Setup Guide](
 
 Note: It is HIGHLY recommended to have the Archipelago Text Client open alongside your game, as there are currently no indicators when you receive an item.
 
-## Building
+# Building
 You will need the latest version of the [.NET SDK](https://dotnet.microsoft.com/download) installed.
 - Place your vanilla holo8 `Assembly-CSharp.dll` and `netstandard.dll` in the project's lib folder. Both these dll files can be obtained from the `/holo8_Data/Managed` folder.
 - Ensure you are building a BepInEx 5 Plugin targeting NET45 and Unity 2022.3.9.
 - Run `dotnet build`.
 - Move the resultant `ArchipelagoHolo8.dll`, as well as `Archipelago.MultiClient.Net.dll` and `Newtonsoft.Json.dll` to your BepInEx plugins folder.
 
-## Todo
+# Todo
 So so much to do.
 - A proper GUI needs to be built for managing Archipelago settings and connections. As it stands, the existing Archipelago MultiClient GUI template does not seem to function properly with holo8.
 - A visual modification that sets the elevator color to black when you are in BK mode.
 - An option for logic to operate per-talent instead of per-generation. This will cut down on filler, but will also make the logic more Clique-esque.
 - General code cleanup, on both the APWorld side and the client side.
 
-## Special Thanks
+# Special Thanks
 - **TGRP0** for creating their [ULTRAKILL Archipelago implementation](https://github.com/TRPG0/ArchipelagoULTRAKILL/) that this project _heavily_ referenced data and code from
 - **Jarno** for creating their [Timespinner Archipelago implementation](https://github.com/Jarno458/TsRandomizer) that I based a lot of the APWorld code off of
 - **chandler05** for creating their [A Short Hike Archipelago implementation](https://github.com/chandler05/AShortHike.Randomizer) that immensely helped in regards to getting netstandard2.1 Unity games working with Archipelago

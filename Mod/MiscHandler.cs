@@ -17,7 +17,7 @@ namespace ArchipelagoHolo8{
 			
 			{40," got pummeled by Mikodanye and died."},
 			{41," got eaten by Taranchama and died."},
-			{44," got pummeled by Mitieru and died."},
+			{44," got pummeled by Miteiru and died."},
 			{45," got arrested by the Oozora Police and died."},
 			{49," got ran over by Botan's shopping cart and died."},
 			{51," was ambushed by Mumei's Nightmare and died."},
