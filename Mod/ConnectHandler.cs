@@ -45,15 +45,16 @@ namespace ArchipelagoHolo8{
 			catch (Exception e){
 				result = new LoginFailure(e.GetBaseException().Message);
 			}
-			if(result is LoginSuccessful loginSuccess){
+			if (result is LoginSuccessful loginSuccess)
+			{
 				Debug.Log("Successfully connected to server, setting up...");
 				Authenticated = true;
 
 				syncItems();
-				
+
 				//Push locations
 				LocationHandler.locations = ((JObject)loginSuccess.SlotData["locations"]).ToObject<Dictionary<string, long>>();
-				
+
 				//Handle YAML slotdata values.
 				MiscHandler.noAnomaly = int.Parse(loginSuccess.SlotData["NoAnomalyPercentage"].ToString());
 				MiscHandler.reusedAnomaly = int.Parse(loginSuccess.SlotData["ReusedAnomalyPercentage"].ToString());
@@ -61,15 +62,16 @@ namespace ArchipelagoHolo8{
 				ItemHandler.hardAnomalies = bool.Parse(loginSuccess.SlotData["HardAnomalies"].ToString());
 
 				//Handle datastore pull.
-				Session.DataStorage[Scope.Slot,"seenAnomalyList"].Initialize(new List<int>().ToArray());
-				Session.DataStorage[Scope.Slot,"seenEverydayList"].Initialize(new List<int>().ToArray());
-				ItemHandler.seenAnomalyList = Session.DataStorage[Scope.Slot,"seenAnomalyList"].To<List<int>>();
-				ItemHandler.seenEverydayList = Session.DataStorage[Scope.Slot,"seenEverydayList"].To<List<int>>();
-				
+				Session.DataStorage[Scope.Slot, "seenAnomalyList"].Initialize(new List<int>().ToArray());
+				Session.DataStorage[Scope.Slot, "seenEverydayList"].Initialize(new List<int>().ToArray());
+				ItemHandler.seenAnomalyList = Session.DataStorage[Scope.Slot, "seenAnomalyList"].To<List<int>>();
+				ItemHandler.seenEverydayList = Session.DataStorage[Scope.Slot, "seenEverydayList"].To<List<int>>();
+
 				//Setup deathlink.
 				doingDeathlink = bool.Parse(loginSuccess.SlotData["death_link"].ToString());
 				deathLinkService = Session.CreateDeathLinkService();
-				if(doingDeathlink){
+				if (doingDeathlink)
+				{
 					deathLinkService.EnableDeathLink();
 					deathLinkService.OnDeathLinkReceived += DeathLinkRecieved;
 				}
@@ -78,16 +80,19 @@ namespace ArchipelagoHolo8{
 
 				Debug.Log("Successfully set up a connection to Archipelago. Let's play!");
 			}
-			else if(result is LoginFailure failure){
+			else if (result is LoginFailure failure)
+			{
 				string errorMessage = $"Failed to connect to Archipelago.\n";
-				foreach (ConnectionRefusedError error in failure.ErrorCodes){
+				foreach (ConnectionRefusedError error in failure.ErrorCodes)
+				{
 					errorMessage += $"{error}: ";
 				}
-				foreach (string error in failure.Errors){
+				foreach (string error in failure.Errors)
+				{
 					errorMessage += $"{error}";
 				}
 				Debug.Log(errorMessage);
-                Session = null;
+				Session = null;
 				return;
 			}
 			

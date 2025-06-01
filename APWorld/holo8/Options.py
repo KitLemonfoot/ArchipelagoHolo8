@@ -11,6 +11,17 @@ class AnomalyTypes(Choice):
     option_both = 2
     default = 0
 
+class TalentSanity(Choice):
+    """
+    You can choose whether to group anomalies by Hololive gen, or by individual talent.
+    Generation provides more fluid logic, but introduces a lot of filler.
+    Talent has less filler, but has very one-to-one logic.
+    """
+    display_name = "Talentsanity"
+    option_generation = 0
+    option_talent = 1
+    default = 0
+
 class NoAnomalyPercentage(Range):
     """
     Percentage chance to land on a floor with no anomaly.
@@ -46,6 +57,7 @@ class Holo8DeathLink(DeathLink):
 @dataclass
 class Holo8Options(PerGameCommonOptions):
     anomaly_types: AnomalyTypes
+    talentsanity: TalentSanity
     no_anomaly_percentage: NoAnomalyPercentage
     reused_anomaly_percentage: ReusedAnomalyPercentage
     hard_anomalies: HardAnomalies

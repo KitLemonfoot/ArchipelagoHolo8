@@ -46,10 +46,13 @@ class Holo8World(World):
         self.doEveryday = True
         
 
-    def create_item(self, name: str) -> Holo8Item:
+    def create_item(self, name: str, anomalyTypes=2) -> Holo8Item:
         item_id: int = self.item_name_to_id[name]
         id = item_id - base_id
-        classification = item_list[id].classification
+        if(self.options.anomaly_types.value<2 and (anomalyTypes!=self.options.anomaly_types.value and anomalyTypes!=2)):
+            classification = ItemClassification.filler
+        else:
+            classification = item_list[id].classification
         return Holo8Item(name, classification, item_id, self.player)
     
 
@@ -81,8 +84,8 @@ class Holo8World(World):
 
         #Handle goal.
         victory: Location = self.get_location("Escaped")
-        victory.place_locked_item(self.create_item("Paper Shreds"))
-        multiworld.completion_condition[player] = lambda state: state.has("Paper Shreds", player)
+        victory.place_locked_item(self.create_item("Shredded Ofuda Tags", 2))
+        multiworld.completion_condition[player] = lambda state: state.has("Shredded Ofuda Tags", player)
    
 
     def create_items(self):
@@ -90,20 +93,22 @@ class Holo8World(World):
 
         #Handle static items.
         for item in item_list:
-            if(item.name=="Paper Shreds"):
+            if(item.name=="Shredded Ofuda Tags" or item.name=="Nothing"):
                 continue
-            pool.append(self.create_item(item.name))
+            if(item.itemType != self.options.talentsanity.value and item.itemType!=2):
+                continue
+            pool.append(self.create_item(item.name, item.anomalyTypes))
 
         #Handle junk items.
         junk = len(self.multiworld.get_unfilled_locations(self.player)) - len(pool)
         for _ in range(junk):
-            pool.append(self.create_item("Nothing"))
+            pool.append(self.create_item("Nothing", 2))
 
         self.multiworld.itempool += pool
 
     def fill_slot_data(self) -> Dict[str, Any]:
         slot_data: Dict[str, Any] = {
-            "version": "0.0.1",
+            "version": "0.2.0",
             "locations": self.game_id_to_long,
             "AnomalyTypes": self.options.anomaly_types.value,
             "NoAnomalyPercentage": self.options.no_anomaly_percentage.value,

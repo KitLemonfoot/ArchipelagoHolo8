@@ -10,28 +10,105 @@ using Newtonsoft.Json;
 namespace ArchipelagoHolo8{
 	
 	public static class ItemHandler{
-		
-		//Flags for generations.
-		public static Dictionary<string, bool> generationFlags = new Dictionary<string, bool>(){
-			{"Hololive Generation 0", false},
-			{"Hololive Generation 1", false},
-			{"Hololive Generation 2", false},
-			{"Hololive GAMERS", false},
-			{"Hololive Fantasy", false},
-			{"HoloForce", false},
-			{"NePoLaBo", false},
-			{"HoloX Secret Society", false},
-			{"ReGLOSS", false},
-			{"FLOW GLOW", false},
-			{"Area 15", false},
-			{"Holoro", false},
-			{"Holoh3ro", false},
-			{"Hololive Myth", false},
-			{"Hololive CouncilRyS", false},
-			{"Hololive Advent", false},
-			{"Hololive Justice", false},
+
+		//Flags for talents.
+		public static Dictionary<string, bool> talentFlags = new Dictionary<string, bool>(){
+			{"Tokino Sora", false},
+			{"Roboco", false},
+			{"Sakura Miko", false},
+			{"Hoshimachi Suisei", false},
+			{"AZKi", false},
+			{"Aki Rosenthal", false},
+			{"Akai Haato", false},
+			{"Shirakami Fubuki", false},
+			{"Natsuiro Matsuri", false},
+			{"Minato Aqua", false},
+			{"Murasaki Shion", false},
+			{"Nakiri Ayame", false},
+			{"Yuzuki Choco", false},
+			{"Oozora Subaru", false},
+			{"Ookami Mio", false},
+			{"Nekomata Okayu", false},
+			{"Inugami Korone", false},
+			{"Usada Pekora", false},
+			{"Shiranui Flare", false},
+			{"Shirogane Noel", false},
+			{"Houshou Marine", false},
+			{"Amane Kanata", false},
+			{"Tsunomaki Watame", false},
+			{"Kiryu Coco", false},
+			{"Tokoyami Towa", false},
+			{"Himemori Luna", false},
+			{"Yukihana Lamy", false},
+			{"Shishiro Botan", false},
+			{"Momosuzu Nene", false},
+			{"Omaru Polka", false},
+			{"Laplus Darknesss", false},
+			{"Takane Lui", false},
+			{"Hakui Koyori", false},
+			{"Sakamata Chloe", false},
+			{"Kazama Iroha", false},
+			{"Hiodoshi Ao", false},
+			{"Otonose Kanade", false},
+			{"Ichijou Ririka", false},
+			{"Juufuutei Raden", false},
+			{"Todoroki Hajime", false},
+			{"Isaki Riona", false},
+			{"Koganei Niko", false},
+			{"Mizumiya Su", false},
+			{"Rindo Chihaya", false},
+			{"Kikirara Vivi", false},
+			{"Ayunda Risu", false},
+			{"Moona Hoshinova", false},
+			{"Airani Iofifteen", false},
+			{"Kureiji Ollie", false},
+			{"Anya Melfissa", false},
+			{"Pavolia Reine", false},
+			{"Vestia Zeta", false},
+			{"Kaela Kovalskia", false},
+			{"Kobo Kanaeru", false},
+			{"Mori Calliope", false},
+			{"Takanashi Kiara", false},
+			{"Ninomae Inanis", false},
+			{"Gawr Gura", false},
+			{"Amelia Watson", false},
+			{"IRyS", false},
+			{"Tsukumo Sana", false},
+			{"Ceres Fauna", false},
+			{"Ouro Kronii", false},
+			{"Nanashi Mumei", false},
+			{"Hakos Baelz", false},
+			{"Shiori Novella", false},
+			{"Koseki Bijou", false},
+			{"Nerissa Ravencroft", false},
+			{"FUWAMOCO", false},
+			{"Elizabeth Rose Bloodflame", false},
+			{"Gigi Murin", false},
+			{"Cecilia Immergreen", false},
+			{"Raora Panthera", false},
 			{"Mikodanye", false},
 			{"Taranchama", false}
+		};
+
+		//Lists of generations: used when determining what to give the player in generation mode.
+		public static Dictionary<string, string[]> generationLists = new Dictionary<string, string[]>(){
+			{"Hololive Generation 0", ["Tokino Sora", "Roboco", "Sakura Miko", "Hoshimachi Suisei", "AZKi"]},
+			{"Hololive Generation 1", ["Shirakami Fubuki", "Natsuiro Matsuri", "Aki Rosenthal", "Akai Haato"]},
+			{"Hololive Generation 2", ["Minato Aqua", "Murasaki Shion", "Nakiri Ayame", "Yuzuki Choco", "Oozora Subaru"]},
+			{"Hololive GAMERS", ["Ookami Mio", "Nekomata Okayu", "Inugami Korone"]},
+			{"Hololive Fantasy", ["Usada Pekora", "Shiranui Flare", "Shirogane Noel", "Houshou Marine"]},
+			{"HoloForce", ["Amane Kanata", "Tsunomaki Watame", "Kiryu Coco", "Tokoyami Towa", "Himemori Luna"]},
+			{"NePoLaBo", ["Yukihana Lamy", "Shishiro Botan", "Momosuzu Nene", "Omaru Polka"]},
+			{"HoloX Secret Society", ["Laplus Darknesss", "Takane Lui", "Hakui Koyori", "Sakamata Chloe", "Kazama Iroha"]},
+			{"ReGLOSS", ["Hiodoshi Ao", "Otonose Kanade", "Ichijou Ririka", "Juufuutei Raden", "Todoroki Hajime"]},
+			{"FLOW GLOW", ["Isaki Riona", "Koganei Niko", "Mizumiya Su", "Rindo Chihaya", "Kikirara Vivi"]},
+			{"Area 15", ["Ayunda Risu", "Moona Hoshinova", "Airani Iofifteen"]},
+			{"Holoro", ["Kureiji Ollie", "Anya Melfissa", "Pavolia Reine"]},
+			{"Holoh3ro", ["Vestia Zeta", "Kaela Kovalskia", "Kobo Kanaeru"]},
+			{"Hololive Myth", ["Mori Calliope", "Takanashi Kiara", "Ninomae Inanis", "Gawr Gura", "Amelia Watson"]},
+			{"Hololive CouncilRyS", ["IRyS", "Tsukumo Sana", "Ceres Fauna", "Ouro Kronii", "Nanashi Mumei", "Hakos Baelz"]},
+			{"Hololive Advent", ["Shiori Novella", "Koseki Bijou", "Nerissa Ravencroft", "FUWAMOCO"]},
+			{"Hololive Justice", ["Elizabeth Rose Bloodflame", "Gigi Murin", "Cecilia Immergreen", "Raora Panthera"]}
 		};
 		
 		//Anomalies that are allowed to be a part of generation.
@@ -47,33 +124,33 @@ namespace ArchipelagoHolo8{
 		public static string[][] anomalyLogic = {
 			new string[]{}, //black hair suisei
 			new string[]{"hard"}, //ayame clothes
-			new string[]{"Hololive Generation 0"}, //35P graffiti
+			new string[]{"Sakura Miko"}, //35P graffiti
 			new string[]{"Taranchama", "hard"}, //taranchama eyes
-			new string[]{"Hololive Generation 0"}, //35p ball
-			new string[]{"ReGLOSS"}, //ririka poster
+			new string[]{"Sakura Miko"}, //35p ball
+			new string[]{"Ichijou Ririka"}, //ririka poster
 			new string[]{}, //red office
-			new string[]{"Hololive Justice"}, //gigi buttons
+			new string[]{"Gigi Murin"}, //gigi buttons
 			new string[]{}, //ayame glasses
 			new string[]{}, //mitieru lights
 			new string[]{}, //ayame dance
 			new string[]{}, //fast dance
-			new string[]{"ReGLOSS"}, //ao legs
-			new string[]{"Hololive Generation 0"}, //35p poster
-			new string[]{"Hololive Fantasy"}, //nousagi on ayame
-			new string[]{"Hololive Generation 0"}, //35p on suisei
+			new string[]{"Hiodoshi Ao"}, //ao legs
+			new string[]{"Sakura Miko"}, //35p poster
+			new string[]{"Usada Pekora"}, //nousagi on ayame
+			new string[]{"Sakura Miko"}, //35p on suisei
 			new string[]{}, //marine strained back
-			new string[]{"Hololive Generation 0"}, //micomet
-			new string[]{"Hololive Fantasy"}, //large nousagi
+			new string[]{"Sakura Miko"}, //micomet
+			new string[]{"Usada Pekora"}, //large nousagi
 			new string[]{}, //yagoo nameplate
-			new string[]{"HoloForce"}, //watame chair
-			new string[]{"HoloX Secret Society"}, //koyori
-			new string[]{"Hololive Generation 1"}, //akirose in corner
-			new string[]{"NePoLaBo"}, //botan laugh
-			new string[]{"Hololive Generation 0"}, //elevator sora
-			new string[]{"Hololive Generation 1", "Hololive Generation 2"}, //choco
-			new string[]{"Hololive GAMERS"}, //mio
+			new string[]{"Tsunomaki Watame"}, //watame chair
+			new string[]{"Hakui Koyori"}, //koyori
+			new string[]{"Aki Rosenthal"}, //akirose in corner
+			new string[]{"Shishiro Botan"}, //botan laugh
+			new string[]{"Tokino Sora"}, //elevator sora
+			new string[]{"Shirakami Fubuki", "Yuzuki Choco"}, //choco
+			new string[]{"Ookami Mio"}, //mio
 			new string[]{}, //poster move
-			new string[]{"ReGLOSS"}, //kanade
+			new string[]{"Otonose Kanade"}, //kanade
 			new string[]{}, //large phone
 			new string[]{}, //large ayame
 			new string[]{}, //large marine
@@ -82,134 +159,134 @@ namespace ArchipelagoHolo8{
 			new string[]{}, //suisei smile
 			new string[]{}, //ayame angry
 			new string[]{}, //marine smile
-			new string[]{"Hololive Generation 0"}, //azki elevator
-			new string[]{"Hololive GAMERS"}, //ayame koronesuki
-			new string[]{"Hololive Generation 0"}, //miko elevator
+			new string[]{"AZKi"}, //azki elevator
+			new string[]{"Inugami Korone"}, //ayame koronesuki
+			new string[]{"Sakura Miko"}, //miko elevator
 			new string[]{"Mikodanye"}, //mikodanye button
 			new string[]{"Taranchama"}, //taranchama hallway
-			new string[]{"Hololive GAMERS"}, //treekun
-			new string[]{"Hololive Generation 1"}, //tired fubuzilla
-			new string[]{"Hololive Generation 1"}, //mitieru in hallway
-			new string[]{"Hololive Generation 2"}, //oozora police
-			new string[]{"Hololive Generation 2"}, //aqushio broom
-			new string[]{"HoloForce"}, //watame in private
-			new string[]{"HoloForce"}, //kanata wall
-			new string[]{"NePoLaBo"}, //botan cart
-			new string[]{"Holoro"}, //ollie
-			new string[]{"Hololive CouncilRyS"}, //mumei
-			new string[]{"Hololive Advent"}, //fuwamoco
-			new string[]{"ReGLOSS"}, //raden mask
+			new string[]{"Inugami Korone"}, //treekun
+			new string[]{"Shirakami Fubuki"}, //tired fubuzilla
+			new string[]{"Shirakami Fubuki"}, //mitieru in hallway
+			new string[]{"Oozora Subaru"}, //oozora police
+			new string[]{"Minato Aqua", "Murasaki Shion"}, //aqushio broom
+			new string[]{"Tsunomaki Watame"}, //watame in private
+			new string[]{"Amane Kanata"}, //kanata wall
+			new string[]{"Shishiro Botan"}, //botan cart
+			new string[]{"Kureiji Ollie"}, //ollie
+			new string[]{"Nanashi Mumei"}, //mumei
+			new string[]{"FUWAMOCO"}, //fuwamoco
+			new string[]{"Juufuutei Raden"}, //raden mask
 			new string[]{"hard"}, //azki poster
-			new string[]{"Hololive Myth"}, //kiara
+			new string[]{"Takanashi Kiara"}, //kiara
 			new string[]{"hard"}, //marine wrong eyes
-			new string[]{"Hololive Generation 1"}, //fubuki in room
-			new string[]{"Hololive GAMERS"}, //korone koronesuki
+			new string[]{"Shirakami Fubuki"}, //fubuki in room
+			new string[]{"Inugami Korone"}, //korone koronesuki
 			new string[]{"Mikodanye", "Taranchama"}, //observation room
-			new string[]{"HoloForce"}, //kanata handshake
+			new string[]{"Amane Kanata"}, //kanata handshake
 			new string[]{"hard"}, //mitieru poster
 			new string[]{}, //no overtime
 			new string[]{"Mikodanye"}, //mikodanye stuck
-			new string[]{"NePoLaBo"}, //polpeller
+			new string[]{"Omaru Polka"}, //polpeller
 			new string[]{"hard"}, //eyepatch mark
-			new string[]{"NePoLaBo"}, //nene beetle
-			new string[]{"ReGLOSS", "FLOW GLOW"}, //vivi
+			new string[]{"Momosuzu Nene"}, //nene beetle
+			new string[]{"Juufuutei Raden", "Kikirara Vivi"}, //vivi
 			new string[]{"Mikodanye", "Taranchama"}, //construction
-			new string[]{"Hololive Generation 0"}, //35p exit
-			new string[]{"NePoLaBo", "hard"}, //invisible botan
-			new string[]{"HoloForce"}, //coco kanata
-			new string[]{"Hololive Generation 0"}, //hagebo
-			new string[]{"Hololive Generation 0"}, //suicopath
-			new string[]{"Hololive Generation 0"}, //azki phone
+			new string[]{"Sakura Miko"}, //35p exit
+			new string[]{"Shishiro Botan", "hard"}, //invisible botan
+			new string[]{"Amane Kanata", "Kiryu Coco"}, //coco kanata
+			new string[]{"Roboco"}, //hagebo
+			new string[]{"Hoshimachi Suisei"}, //suicopath
+			new string[]{"AZKi"}, //azki phone
 			new string[]{}, //onion
 			new string[]{"hard"}, //sapling
 			new string[]{"hard"}, //bath poster
-			new string[]{"hard"}, //marine eye in wall
-			new string[]{"Hololive Generation 0"}, //miko button
-			new string[]{"Holoh3ro"}, //kaela
-			new string[]{"Hololive Generation 2"}, //shion poster
-			new string[]{"ReGLOSS"}, //ririka jump
-			new string[]{"HoloForce"} //watame wall
+			new string[]{"Houshou Marine", "hard"}, //marine eye in wall
+			new string[]{"Sakura Miko"}, //miko button
+			new string[]{"Kaela Kovalskia"}, //kaela
+			new string[]{"Murasaki Shion"}, //shion poster
+			new string[]{"Ichijou Ririka"}, //ririka jump
+			new string[]{"Tsunomaki Watame"} //watame wall
 		};
 		//And for Everyday too.
 		public static string[][] everydayLogic = {
-			new string[]{"Hololive Fantasy"}, //fantasy tower
-			new string[]{"NePoLaBo"}, //nepolabo cart
-			new string[]{"Hololive Advent"}, //biboo tax
-			new string[]{"Hololive Generation 0", "Hololive CouncilRyS", "Holoro"}, //miko japanese
-			new string[]{"Hololive GAMERS"}, //pet koronesuki
-			new string[]{"Hololive Generation 2", "HoloForce"}, //startend
-			new string[]{"Hololive Generation 2"}, //subaru samr
-			new string[]{"Hololive Generation 1", "Hololive Generation 2"}, //peep matsuri
-			new string[]{"Hololive Generation 2", "HoloForce"}, //subaluna
-			new string[]{"HoloX Secret Society"}, //chloe bath
-			new string[]{"Hololive Myth"}, //smol ame
-			new string[]{"HoloX Secret Society", "Holoh3ro"}, //zeta iroha
-			new string[]{"Hololive Myth"}, //ina tentacle
+			new string[]{"Usada Pekora", "Shiranui Flare", "Shirogane Noel", "Houshou Marine"}, //fantasy tower
+			new string[]{"Yukihana Lamy", "Shishiro Botan", "Momosuzu Nene", "Omaru Polka"}, //nepolabo cart
+			new string[]{"Shiori Novella", "Koseki Bijou", "Nerissa Ravencroft", "FUWAMOCO"}, //biboo tax
+			new string[]{"Sakura Miko", "IRyS", "Anya Melfissa"}, //miko japanese
+			new string[]{"Nekomata Okayu","Inugami Korone"}, //pet koronesuki
+			new string[]{"Minato Aqua", "Tokoyami Towa"}, //startend
+			new string[]{"Yuzuki Choco", "Oozora Subaru"}, //subaru samr
+			new string[]{"Natsuiro Matsuri", "Oozora Subaru"}, //peep matsuri
+			new string[]{"Oozora Subaru", "Himemori Luna"}, //subaluna
+			new string[]{"Laplus Darknesss", "Sakamata Chloe"}, //chloe bath
+			new string[]{"Amelia Watson"}, //smol ame
+			new string[]{"Kazama Iroha", "Vestia Zeta"}, //zeta iroha
+			new string[]{"Ninomae Inanis"}, //ina tentacle
 			new string[]{}, //home on time
 			new string[]{}, //achan
-			new string[]{"Hololive Generation 0"}, //35p suisei
-			new string[]{"Hololive GAMERS"}, //okanyan
+			new string[]{"Sakura Miko"}, //35p suisei
+			new string[]{"Nekomata Okayu"}, //okanyan
 			new string[]{}, //marine mosaic
 			new string[]{}, //classmate marine
-			new string[]{"NePoLaBo"}, //nekko
-			new string[]{"HoloX Secret Society"}, //handwriting
-			new string[]{"HoloX Secret Society"}, //secret iroha
-			new string[]{"HoloX Secret Society"}, //lui
-			new string[]{"Hololive GAMERS", "Area 15"}, //risu
-			new string[]{"Area 15"}, //iofi
-			new string[]{"Area 15"}, //moona
-			new string[]{"Holoh3ro"}, //ckia
-			new string[]{"Hololive Myth"}, //gura tub
-			new string[]{"Hololive Generation 2", "Hololive Myth", "Hololive CouncilRyS"}, //oozora police chairs
-			new string[]{"Hololive CouncilRyS"}, //fauna
-			new string[]{"Hololive CouncilRyS"}, //kronii
-			new string[]{"Hololive Advent"}, //nerissa window
-			new string[]{"ReGLOSS"}, //ririka sos
-			new string[]{"ReGLOSS"}, //hajime
-			new string[]{"ReGLOSS"}, //ao
-			new string[]{"Hololive CouncilRyS"}, //sana
+			new string[]{"Momosuzu Nene"}, //nekko
+			new string[]{"Sakamata Chloe"}, //handwriting
+			new string[]{"Kazama Iroha"}, //secret iroha
+			new string[]{"Takane Lui"}, //lui
+			new string[]{"Inugami Korone", "Ayunda Risu"}, //risu
+			new string[]{"Airani Iofifteen"}, //iofi
+			new string[]{"Moona Hoshinova"}, //moona
+			new string[]{"Kaela Kovalskia"}, //ckia
+			new string[]{"Gawr Gura"}, //gura tub
+			new string[]{"Oozora Subaru", "Gawr Gura", "Hakos Baelz"}, //oozora police chairs
+			new string[]{"Ceres Fauna"}, //fauna
+			new string[]{"Ouro Kronii"}, //kronii
+			new string[]{"Nerissa Ravencroft"}, //nerissa window
+			new string[]{"Ichijou Ririka"}, //ririka sos
+			new string[]{"Otonose Kanade", "Todoroki Hajime"}, //hajime
+			new string[]{"Hiodoshi Ao"}, //ao
+			new string[]{"Tsukumo Sana"}, //sana
 			new string[]{}, //asacoco
 			new string[]{}, //nodoka
-			new string[]{"Hololive Myth"}, //calli
-			new string[]{"Hololive CouncilRyS"}, //irys
-			new string[]{"Hololive Generation 1", "Hololive GAMERS"}, //mio fubuki
-			new string[]{"Hololive Generation 0", "Hololive Justice"}, //justice japanese
-			new string[]{"Hololive Generation 0", "Hololive Generation 1"}, //mukirose
-			new string[]{"Hololive Generation 1"}, //haachama cooking
-			new string[]{"Hololive GAMERS"}, //korone chase
-			new string[]{"Hololive Generation 1"}, //excited fubuki
-			new string[]{"Hololive Generation 2"}, //aqua mask
-			new string[]{"HoloX Secret Society"}, //mayo koyori
-			new string[]{"Holoro"}, //reine
-			new string[]{"HoloForce"}, //kanata melon
-			new string[]{"Holoh3ro"}, //ableist
-			new string[]{"Hololive Myth"}, //ame potato
-			new string[]{"HoloX Secret Society"}, //laplus
-			new string[]{"Hololive Generation 0", "Hololive Generation 1"}, //gomoku
-			new string[]{"Hololive Generation 1"}, //cardboard
-			new string[]{"Hololive GAMERS"}, //koronesuki poster
-			new string[]{"Hololive Fantasy"}, //noel
-			new string[]{"Hololive Fantasy"}, //pekorap
-			new string[]{"NePoLaBo"}, //liverface lamy
-			new string[]{"Hololive Generation 0"}, //sora ankimo
-			new string[]{"Hololive Generation 1"}, //matsuri mascots
-			new string[]{"HoloForce"}, //towa bibi
-			new string[]{"Hololive CouncilRyS"}, //bae rats
-			new string[]{"FLOW GLOW"}, //riona niko
-			new string[]{"FLOW GLOW"}, //chihaya
-			new string[]{"HoloForce","FLOW GLOW"}, //su kanata
-			new string[]{"Hololive Generation 0"}, //roboco charge
-			new string[]{"Holoro"}, //anya ghost
-			new string[]{"Hololive Generation 1", "Hololive Fantasy"}, //flare pineapple
-			new string[]{"Hololive Generation 2"}, //shion aqua
-			new string[]{"Hololive Generation 2", "HoloX Secret Society"}, //shion chloe towel
-			new string[]{"Hololive Generation 2"}, //gen2 dance
-			new string[]{"Hololive Generation 2"}, //shiokko
-			new string[]{"NePoLaBo"}, //menya botan
-			new string[]{"Holoro"}, //toasterkun
-			new string[]{"HoloForce"}, //watame sheep shear
-			new string[]{"HoloForce"}, //gen4 coco
-			new string[]{"Hololive Generation 0"} //azki icecream
+			new string[]{"Mori Calliope"}, //calli
+			new string[]{"IRyS"}, //irys
+			new string[]{"Shirakami Fubuki", "Ookami Mio"}, //mio fubuki
+			new string[]{"Sakura Miko", "Elizabeth Rose Bloodflame", "Gigi Murin", "Cecilia Immergreen", "Raora Panthera"}, //justice japanese
+			new string[]{"Sakura Miko", "Aki Rosenthal"}, //mukirose
+			new string[]{"Akai Haato"}, //haachama cooking
+			new string[]{"Inugami Korone"}, //korone chase
+			new string[]{"Shirakami Fubuki"}, //excited fubuki
+			new string[]{"Minato Aqua"}, //aqua mask
+			new string[]{"Hakui Koyori"}, //mayo koyori
+			new string[]{"Pavolia Reine"}, //reine
+			new string[]{"Amane Kanata"}, //kanata melon
+			new string[]{"Kobo Kanaeru"}, //ableist
+			new string[]{"Amelia Watson"}, //ame potato
+			new string[]{"Laplus Darknesss"}, //laplus
+			new string[]{"Sakura Miko", "Shirakami Fubuki"}, //gomoku
+			new string[]{"Shirakami Fubuki"}, //cardboard
+			new string[]{"Inugami Korone"}, //koronesuki poster
+			new string[]{"Shirogane Noel"}, //noel
+			new string[]{"Usada Pekora"}, //pekorap
+			new string[]{"Yukihana Lamy"}, //liverface lamy
+			new string[]{"Tokino Sora"}, //sora ankimo
+			new string[]{"Natsuiro Matsuri"}, //matsuri mascots
+			new string[]{"Tokoyami Towa"}, //towa bibi
+			new string[]{"Hakos Baelz"}, //bae rats
+			new string[]{"Isaki Riona", "Koganei Niko"}, //riona niko
+			new string[]{"Rindo Chihaya"}, //chihaya
+			new string[]{"Amane Kanata","Mizumiya Su"}, //su kanata
+			new string[]{"Roboco"}, //roboco charge
+			new string[]{"Anya Melfissa"}, //anya ghost
+			new string[]{"Shirakami Fubuki", "Shiranui Flare"}, //flare pineapple
+			new string[]{"Minato Aqua", "Murasaki Shion"}, //shion aqua
+			new string[]{"Murasaki Shion", "Sakamata Chloe"}, //shion chloe towel
+			new string[]{"Minato Aqua", "Murasaki Shion", "Nakiri Ayame", "Yuzuki Choco", "Oozora Subaru"}, //gen2 dance
+			new string[]{"Murasaki Shion"}, //shiokko
+			new string[]{"Yukihana Lamy", "Shishiro Botan", "Momosuzu Nene", "Omaru Polka"}, //menya botan
+			new string[]{"Anya Melfissa"}, //toasterkun
+			new string[]{"Tsunomaki Watame"}, //watame sheep shear
+			new string[]{"Amane Kanata", "Tsunomaki Watame", "Kiryu Coco", "Tokoyami Towa", "Himemori Luna"}, //gen4 coco
+			new string[]{"AZKi"} //azki icecream
 		};
 		
 		//AP Slotdata
@@ -217,9 +294,17 @@ namespace ArchipelagoHolo8{
 		public static bool hardAnomalies = false;
 		
 		public static void recieveItem(string itemName){
-			//Generations.
-			if(generationFlags.ContainsKey(itemName)){
-				generationFlags[itemName]=true;
+			//Individual talents.
+			if(talentFlags.ContainsKey(itemName)){
+				talentFlags[itemName]=true;
+				recalculateAnomalyLogic();
+				return;
+			}
+			//Generation handler.
+			if(generationLists.ContainsKey(itemName)){
+				foreach(string t in generationLists[itemName]){
+					talentFlags[t]=true;
+				}
 				recalculateAnomalyLogic();
 				return;
 			}
@@ -231,8 +316,8 @@ namespace ArchipelagoHolo8{
 		}
 		
 		public static void wipeItems(){
-			foreach(KeyValuePair<string, bool> kvp in generationFlags){
-				generationFlags[kvp.Key] = false;
+			foreach(KeyValuePair<string, bool> kvp in talentFlags){
+				talentFlags[kvp.Key] = false;
 			}
 		}
 		
@@ -258,7 +343,7 @@ namespace ArchipelagoHolo8{
 							break;
 						}
 						//If we don't have the generation flag, we can't go to that anomaly
-						if(!generationFlags[l]){
+						if(!talentFlags[l]){
 							ok = false;
 							break;
 						}
@@ -277,7 +362,7 @@ namespace ArchipelagoHolo8{
 						continue;
 					}
 					foreach(string l in everydayLogic[a]){
-						if(!generationFlags[l]){
+						if(!talentFlags[l]){
 							ok = false;
 							break;
 						}
@@ -345,7 +430,7 @@ namespace ArchipelagoHolo8{
 		//Determine if we can goal.
 		//Used to disable the infinitley looping elevator.
 		public static bool canGoal(){
-			return generationFlags["Mikodanye"] && generationFlags["Taranchama"];
+			return talentFlags["Mikodanye"] && talentFlags["Taranchama"];
 		}
 		
 		

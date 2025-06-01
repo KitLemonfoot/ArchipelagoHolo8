@@ -1,5 +1,5 @@
 # holo8 Archipelago Client
-[<img src="https://i.imgur.com/X2EAzUB.png" height="250"/>](https://i.imgur.com/X2EAzUB.png)
+[<img src="https://i.imgur.com/X2EAzUB.png" height="250"/>]()
 
 This is a work-in-progress BepInEx mod for [holo8](https://store.steampowered.com/app/3373960/holo8/) that targets the [Archipelago Multiworld Randomizer](https://archipelago.gg/).
 
@@ -11,11 +11,14 @@ Aha, not so. holo8 [is published under the CCMC Corporation's HoloIndie project]
 
 - Encountering and successfully determining an anomaly is a check. *You will not be given a check if you fail to detect an anomaly.*
 - Certain anomalies will not be encountered until you have the respective item relating to the anomaly.
-	- For instance, an anomaly containing Oozora Subaru will not be viewable until you obtain the *Hololive Generation 2* item.
-	- Anomalies containing members of Hololive Project HOPE and Hololive Council have been consolidated into the *Hololive CouncilRyS* item.
+	- For instance, an anomaly containing Oozora Subaru will not be viewable until you obtain either the *Hololive Generation 2* or *Oozora Subaru* item.
+	- When playing on Generation Mode, anomalies containing members of Hololive Project HOPE and Hololive Council are consolidated into the *Hololive CouncilRyS* item.
 	- This does not apply to anomalies affecting the default Ayame, Suisei and Marine characters already in the office; their anomalies are available at the start of the game.
 - Various YAML settings exist to modify how anomalies generate.
 	- You can choose to play with only anomalies from Normal Mode, Everyday Mode, or both at the same time.
+	- There are two seperate item collection modes: *Generation Mode* and *Talent Mode*.
+		- Generation Mode: Talents are grouped into their respective generations.
+		- Talent Mode: Each talent is a unique item.
 	- You can choose whether certain hard-to-spot anomalies, such as the blinking AZKi poster or the invisible Botan, are included as checks.
 	- You can choose how often floors with no anomalies appear (though this does not affect the built-in 2 anomaly failsafe). Likewise, you can also choose the likelihood that a floor with an anomaly you have already checked can appear.
 - DeathLink support: If enabled, being killed by an anomaly will kill every other player in your multiworld that has the DeathLink option enabled in their YAML. Likewise, if someone else dies in their game, you will be sent back to Floor 8.
@@ -59,8 +62,6 @@ You will need the latest version of the [.NET SDK](https://dotnet.microsoft.com/
 ## Todo
 So so much to do.
 - A proper GUI needs to be built for managing Archipelago settings and connections. As it stands, the existing Archipelago MultiClient GUI template does not seem to function properly with holo8.
-- A visual modification that sets the elevator color to black when you are in BK mode.
-- An option for logic to operate per-talent instead of per-generation. This will cut down on filler, but will also make the logic more Clique-esque.
 - General code cleanup, on both the APWorld side and the client side.
 
 ## Special Thanks
