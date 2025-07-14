@@ -39,7 +39,7 @@ item_list: List[Holo8Item] = [
     Holo8Item(ItemClassification.progression, "Tokino Sora", 1, 2),
     Holo8Item(ItemClassification.progression, "Roboco", 1, 2),
     Holo8Item(ItemClassification.progression, "Sakura Miko", 1, 2),
-    Holo8Item(ItemClassification.progression, "Hoshimachi Suisei", 1, 0),
+    Holo8Item(ItemClassification.progression, "Hoshimachi Suisei", 1, 2),
     Holo8Item(ItemClassification.progression, "AZKi", 1, 2),
     Holo8Item(ItemClassification.progression, "Aki Rosenthal", 1, 2),
     Holo8Item(ItemClassification.progression, "Akai Haato", 1, 2),
