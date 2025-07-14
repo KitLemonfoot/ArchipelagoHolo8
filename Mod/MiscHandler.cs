@@ -15,6 +15,8 @@ namespace ArchipelagoHolo8{
 		
 		public static Dictionary<int, string> deathlinkMessages = new Dictionary<int, string>(){
 			
+			{-2," was unable to find an anomaly and died."},
+			{-1," mistook something for an anomaly and died."},
 			{40," got pummeled by Mikodanye and died."},
 			{41," got eaten by Taranchama and died."},
 			{44," got pummeled by Miteiru and died."},
@@ -32,7 +34,7 @@ namespace ArchipelagoHolo8{
 		
 		
 		public static void handleDeathLink(int change){
-			if(ConnectHandler.Authenticated){
+			if(ConnectHandler.Authenticated && ConnectHandler.doingDeathlink && Common.playSceneState_ == PLAY_STATE.PLAY){
 				string sn = ConnectHandler.APSlot;
 				string dm = " died to an unknown anomaly.";
 				if(deathlinkMessages.ContainsKey(change)){
@@ -40,7 +42,6 @@ namespace ArchipelagoHolo8{
 				}
 				string final = sn + dm;
 				ConnectHandler.sendDeathLink(final);
-				
 			}
 		}
 		

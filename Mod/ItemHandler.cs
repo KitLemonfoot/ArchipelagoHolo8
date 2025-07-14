@@ -139,7 +139,7 @@ namespace ArchipelagoHolo8{
 			new string[]{"Usada Pekora"}, //nousagi on ayame
 			new string[]{"Sakura Miko"}, //35p on suisei
 			new string[]{}, //marine strained back
-			new string[]{"Sakura Miko"}, //micomet
+			new string[]{"Sakura Miko", "Hoshimachi Suisei"}, //micomet
 			new string[]{"Usada Pekora"}, //large nousagi
 			new string[]{}, //yagoo nameplate
 			new string[]{"Tsunomaki Watame"}, //watame chair
@@ -148,7 +148,7 @@ namespace ArchipelagoHolo8{
 			new string[]{"Shishiro Botan"}, //botan laugh
 			new string[]{"Tokino Sora"}, //elevator sora
 			new string[]{"Shirakami Fubuki", "Yuzuki Choco"}, //choco
-			new string[]{"Ookami Mio"}, //mio
+			new string[]{"Nakiri Ayame", "Ookami Mio"}, //mio
 			new string[]{}, //poster move
 			new string[]{"Otonose Kanade"}, //kanade
 			new string[]{}, //large phone
@@ -200,7 +200,7 @@ namespace ArchipelagoHolo8{
 			new string[]{}, //onion
 			new string[]{"hard"}, //sapling
 			new string[]{"hard"}, //bath poster
-			new string[]{"Houshou Marine", "hard"}, //marine eye in wall
+			new string[]{"Houshou Marine"}, //marine eye in wall
 			new string[]{"Sakura Miko"}, //miko button
 			new string[]{"Kaela Kovalskia"}, //kaela
 			new string[]{"Murasaki Shion"}, //shion poster
@@ -214,7 +214,7 @@ namespace ArchipelagoHolo8{
 			new string[]{"Shiori Novella", "Koseki Bijou", "Nerissa Ravencroft", "FUWAMOCO"}, //biboo tax
 			new string[]{"Sakura Miko", "IRyS", "Anya Melfissa"}, //miko japanese
 			new string[]{"Nekomata Okayu","Inugami Korone"}, //pet koronesuki
-			new string[]{"Minato Aqua", "Tokoyami Towa"}, //startend
+			new string[]{"Hoshimachi Suisei", "Minato Aqua", "Tokoyami Towa"}, //startend
 			new string[]{"Yuzuki Choco", "Oozora Subaru"}, //subaru samr
 			new string[]{"Natsuiro Matsuri", "Oozora Subaru"}, //peep matsuri
 			new string[]{"Oozora Subaru", "Himemori Luna"}, //subaluna
@@ -231,7 +231,7 @@ namespace ArchipelagoHolo8{
 			new string[]{"Momosuzu Nene"}, //nekko
 			new string[]{"Sakamata Chloe"}, //handwriting
 			new string[]{"Kazama Iroha"}, //secret iroha
-			new string[]{"Takane Lui"}, //lui
+			new string[]{"Nakiri Ayame", "Takane Lui"}, //lui
 			new string[]{"Inugami Korone", "Ayunda Risu"}, //risu
 			new string[]{"Airani Iofifteen"}, //iofi
 			new string[]{"Moona Hoshinova"}, //moona
@@ -247,7 +247,7 @@ namespace ArchipelagoHolo8{
 			new string[]{"Tsukumo Sana"}, //sana
 			new string[]{}, //asacoco
 			new string[]{}, //nodoka
-			new string[]{"Mori Calliope"}, //calli
+			new string[]{"Hoshimachi Suisei", "Mori Calliope"}, //calli
 			new string[]{"IRyS"}, //irys
 			new string[]{"Shirakami Fubuki", "Ookami Mio"}, //mio fubuki
 			new string[]{"Sakura Miko", "Elizabeth Rose Bloodflame", "Gigi Murin", "Cecilia Immergreen", "Raora Panthera"}, //justice japanese
@@ -264,7 +264,7 @@ namespace ArchipelagoHolo8{
 			new string[]{"Laplus Darknesss"}, //laplus
 			new string[]{"Sakura Miko", "Shirakami Fubuki"}, //gomoku
 			new string[]{"Shirakami Fubuki"}, //cardboard
-			new string[]{"Inugami Korone"}, //koronesuki poster
+			new string[]{"Inugami Korone", "Houshou Marine"}, //koronesuki poster
 			new string[]{"Shirogane Noel"}, //noel
 			new string[]{"Usada Pekora"}, //pekorap
 			new string[]{"Yukihana Lamy"}, //liverface lamy

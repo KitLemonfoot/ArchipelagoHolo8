@@ -108,12 +108,13 @@ class Holo8World(World):
 
     def fill_slot_data(self) -> Dict[str, Any]:
         slot_data: Dict[str, Any] = {
-            "version": "0.2.0",
+            "version": "0.2.1",
             "locations": self.game_id_to_long,
             "AnomalyTypes": self.options.anomaly_types.value,
             "NoAnomalyPercentage": self.options.no_anomaly_percentage.value,
             "ReusedAnomalyPercentage": self.options.reused_anomaly_percentage.value,
             "HardAnomalies": bool(self.options.hard_anomalies.value),
-            "death_link": bool(self.options.death_link)
+            "death_link": bool(self.options.death_link),
+            "DeathLinkOnWrongElevator": bool(self.options.deathlink_on_wrong_elevator.value)
         }
         return slot_data

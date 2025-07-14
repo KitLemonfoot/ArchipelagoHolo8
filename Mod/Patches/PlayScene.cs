@@ -116,6 +116,10 @@ namespace ArchipelagoHolo8.Patches{
 	[HarmonyPatch(typeof(PlayScene), "NextStage")]
 	class PlayScene_NextStage_Patch{
 		public static bool Prefix(PlayScene __instance, bool isSelectTrue){
+			//If we aren't connected to AP, hand the generator back to game code.
+			if(ConnectHandler.Authenticated==false){
+				return true;
+			}
 			//If we successfully determined an anomaly, then give the player a check.
 			if(Common.isCurrentChange_ && isSelectTrue==Common.isCurrentChange_){
 				int gm = Convert.ToInt32(Common.gameMode_);
@@ -131,6 +135,15 @@ namespace ArchipelagoHolo8.Patches{
 					ItemHandler.updateDatastore();
 				}
 			}
+			//Handle deathlink for wrong elevator.
+			if(isSelectTrue!=Common.isCurrentChange_ && ConnectHandler.doingFloorDeathlink){
+				if(isSelectTrue){
+					MiscHandler.handleDeathLink(-1);
+				}
+				else{
+					MiscHandler.handleDeathLink(-2);
+				}
+			}
 			//Update items.
 			ConnectHandler.syncItems();
 			//Handle elevator infinite loop.
@@ -141,6 +154,21 @@ namespace ArchipelagoHolo8.Patches{
 			return true;
 		}
 	}
-	
+
+
+	//Ensure that Anomaly ending is completed whenever Anomaly locations are selected.
+	//Mostly an aesthetic/lore reason.
+	[HarmonyPatch(typeof(PlayScene), "GoToClearScene")]
+	class PlayScene_GoToClearScene_Patch{
+		public static bool Prefix(PlayScene __instance){
+			if(ConnectHandler.Authenticated==false){
+                return true;
+            }
+			if(ItemHandler.anomalyTypes%2==0){
+				Common.gameMode_ = GAME_MODE_TYPE.DEFAULT;
+			}
+			return true;
+		}
+	}
 	
 }

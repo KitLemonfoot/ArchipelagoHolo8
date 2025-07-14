@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using HarmonyLib;
 
 namespace ArchipelagoHolo8{
 	
@@ -19,6 +20,7 @@ namespace ArchipelagoHolo8{
 		public static string APserver = null;
 		public static string APSlot = null;
 		public static bool doingDeathlink;
+		public static bool doingFloorDeathlink;
 		public static DeathLinkService deathLinkService = null;
 		
 		public static void ConnectToAP(){
@@ -69,6 +71,7 @@ namespace ArchipelagoHolo8{
 
 				//Setup deathlink.
 				doingDeathlink = bool.Parse(loginSuccess.SlotData["death_link"].ToString());
+				doingFloorDeathlink = bool.Parse(loginSuccess.SlotData["DeathLinkOnWrongElevator"].ToString());
 				deathLinkService = Session.CreateDeathLinkService();
 				if (doingDeathlink)
 				{
@@ -125,8 +128,9 @@ namespace ArchipelagoHolo8{
 			}
 			else{
 				Debug.Log("Got a deathlink; resetting player to Floor 8.");
-				bool fakeC = !Common.isCurrentChange_;
-				Common.playScene_.JudgeNext(fakeC);
+				//bool fakeC = !Common.isCurrentChange_;
+				new GameObject("InitLoad").AddComponent<PlaySceneInitLoadData>().FalsePlayScene();
+				Common_GameReleaseType.Change_PlayScene();
 			}
 			
 		}

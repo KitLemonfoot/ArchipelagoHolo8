@@ -11,6 +11,12 @@ class AnomalyTypes(Choice):
     option_both = 2
     default = 0
 
+class EnableInteractiveAnomalies(Toggle):
+    """
+    If enabled, this will add checks tied to interacting with certain special anomalies such as Menya Botan and AZKi's Ice Cream Bar.
+    """
+    display_name = "Enable Interactive Anomalies"
+
 class TalentSanity(Choice):
     """
     You can choose whether to group anomalies by Hololive gen, or by individual talent.
@@ -20,7 +26,8 @@ class TalentSanity(Choice):
     display_name = "Talentsanity"
     option_generation = 0
     option_talent = 1
-    default = 0
+    default = 1
+
 
 class NoAnomalyPercentage(Range):
     """
@@ -51,14 +58,23 @@ class HardAnomalies(Toggle):
 
 class Holo8DeathLink(DeathLink):
     """
-    When you die, everyone dies. The reverse is also true.
+    When you die, everyone dies. The reverse is also true (you will immediately be sent back to Floor 8).
     """
+
+class DeathLinkOnWrongElevator(Toggle):
+    """
+    If enabled, will also send a DeathLink if you board the wrong elevator.
+    Will have no effect if DeathLink is disabled.
+    """
+    display_name = "DeathLink On Wrong Elevator"
 
 @dataclass
 class Holo8Options(PerGameCommonOptions):
     anomaly_types: AnomalyTypes
+    enable_interactive_anomalies: EnableInteractiveAnomalies
     talentsanity: TalentSanity
     no_anomaly_percentage: NoAnomalyPercentage
     reused_anomaly_percentage: ReusedAnomalyPercentage
     hard_anomalies: HardAnomalies
     death_link: Holo8DeathLink
+    deathlink_on_wrong_elevator: DeathLinkOnWrongElevator

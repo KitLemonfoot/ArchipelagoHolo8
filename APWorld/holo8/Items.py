@@ -47,7 +47,7 @@ item_list: List[Holo8Item] = [
     Holo8Item(ItemClassification.progression, "Natsuiro Matsuri", 1, 1),
     Holo8Item(ItemClassification.progression, "Minato Aqua", 1, 2),
     Holo8Item(ItemClassification.progression, "Murasaki Shion", 1, 2),
-    Holo8Item(ItemClassification.progression, "Nakiri Ayame", 1, 1),
+    Holo8Item(ItemClassification.progression, "Nakiri Ayame", 1, 2),
     Holo8Item(ItemClassification.progression, "Yuzuki Choco", 1, 2),
     Holo8Item(ItemClassification.progression, "Oozora Subaru", 1, 2),
     Holo8Item(ItemClassification.progression, "Ookami Mio", 1, 2),

@@ -13,7 +13,10 @@ namespace ArchipelagoHolo8{
 		public static Action<bool> s => SentCheck;
 		
 		public static void CheckLocation(string loc){
-			
+			if(Common.playSceneState_ == PLAY_STATE.CHECK_ANOMALY){
+				Debug.Log("Refusing check, as user is viewing anomaly from the Anomaly List.");
+				return;
+			}
 			if(locations.ContainsKey(loc) && ConnectHandler.Authenticated){
 				Debug.Log("Checking location: "+loc);
 				ConnectHandler.Session.Locations.CompleteLocationChecksAsync(locations[loc]);

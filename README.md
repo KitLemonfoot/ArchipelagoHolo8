@@ -62,6 +62,8 @@ You will need the latest version of the [.NET SDK](https://dotnet.microsoft.com/
 ## Todo
 So so much to do.
 - A proper GUI needs to be built for managing Archipelago settings and connections. As it stands, the existing Archipelago MultiClient GUI template does not seem to function properly with holo8.
+- Better handling of junk items.
+- Translate APWorld docs into Japanese and Indonesian.
 - General code cleanup, on both the APWorld side and the client side.
 
 ## Special Thanks
