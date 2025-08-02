@@ -342,6 +342,9 @@ namespace ArchipelagoHolo8{
 							ok=false;
 							break;
 						}
+						if(l=="hard"){
+							continue;
+						}
 						//If we don't have the generation flag, we can't go to that anomaly
 						if(!talentFlags[l]){
 							ok = false;

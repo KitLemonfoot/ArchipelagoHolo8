@@ -37,7 +37,7 @@ namespace ArchipelagoHolo8{
 					"holo8", 
 					APSlot, 
 					ItemsHandlingFlags.AllItems,
-					new Version(0,6,1),
+					new Version(0,6,2),
 					null,
 					null,
 					MiscHandler.config_APpassword.Value == "" ? null : MiscHandler.config_APpassword.Value,
